@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-maintained: this is a client-rendered SPA with no server/SSR to
+  generate this dynamically. Add a <url> entry whenever a new indexable page
+  ships. Artist pages are deliberately excluded — they're noindexed while
+  they hold placeholder data (see src/pages/Artists.jsx). /consent is
+  excluded and blocked in robots.txt — it's reachable only via the in-studio
+  QR code and must never appear in search results.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://bobbystattoo.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://bobbystattoo.com/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bobbystattoo.com/aftercare</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bobbystattoo.com/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bobbystattoo.com/blog/what-to-expect-at-your-first-tattoo-consultation</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bobbystattoo.com/blog/choosing-the-right-tattoo-studio-in-sydney</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bobbystattoo.com/blog/tattoo-aftercare-in-sydney-climate-quick-guide</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
