@@ -21,7 +21,30 @@ export default function BlogPost() {
         {post.author} · {dateFormatter.format(new Date(post.publishedAt))}
       </p>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{post.title}</h1>
-      <p className="mt-6 whitespace-pre-line text-muted-foreground">{post.body}</p>
+
+      {/* Each post's body is written as blank-line-separated blocks, where
+          every block except the first/last is "Heading line\nParagraph
+          text" — split on that structure to style headings distinctly,
+          rather than restructuring the (client-reviewed) content itself. */}
+      {post.body.split('\n\n').map((block) => {
+        const [firstLine, ...rest] = block.split('\n')
+        const paragraph = rest.join(' ')
+
+        if (!paragraph) {
+          return (
+            <p key={block} className="mt-6 text-muted-foreground">
+              {firstLine}
+            </p>
+          )
+        }
+
+        return (
+          <div key={block} className="mt-6">
+            <h2 className="font-semibold tracking-tight">{firstLine}</h2>
+            <p className="mt-2 text-muted-foreground">{paragraph}</p>
+          </div>
+        )
+      })}
     </article>
   )
 }
