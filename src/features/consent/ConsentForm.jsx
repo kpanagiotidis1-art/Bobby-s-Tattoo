@@ -3,8 +3,10 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { FileInput } from '@/components/ui/file-input'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { supabase } from '@/lib/supabase'
 import { consentSchema } from './schema'
 
 function FieldError({ message }) {
@@ -16,6 +18,7 @@ const today = () => new Date().toISOString().slice(0, 10)
 
 export default function ConsentForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
   const {
     register,
     control,
@@ -26,12 +29,33 @@ export default function ConsentForm() {
     defaultValues: { signatureDate: today() },
   })
 
-  // TODO: not wired up yet. Once Supabase is set up this needs to upload the ID
-  // photo to a PRIVATE storage bucket (never public — it's a government ID) and
-  // insert a row into a `consent_forms` table, both behind RLS restricted to staff.
   const onSubmit = async (data) => {
-    console.log('Consent form submitted (not yet sent anywhere):', data)
-    await new Promise((resolve) => setTimeout(resolve, 400))
+    setSubmitError(null)
+
+    const formData = new FormData()
+    formData.append('fullName', data.fullName)
+    formData.append('dateOfBirth', data.dateOfBirth)
+    formData.append('idType', data.idType)
+    formData.append('idNumber', data.idNumber)
+    formData.append('phone', data.phone)
+    formData.append('email', data.email)
+    formData.append('address', data.address)
+    formData.append('city', data.city)
+    formData.append('state', data.state)
+    formData.append('postcode', data.postcode)
+    formData.append('agreesToTerms', String(data.agreesToTerms))
+    formData.append('signatureName', data.signatureName)
+    formData.append('signatureDate', data.signatureDate)
+    if (data.tattooArtist) formData.append('tattooArtist', data.tattooArtist)
+    formData.append('idUpload', data.idUpload[0])
+
+    const { error } = await supabase.functions.invoke('submit-consent', { body: formData })
+
+    if (error) {
+      setSubmitError('Something went wrong submitting this form — please show a staff member.')
+      return
+    }
+
     setSubmitted(true)
   }
 
@@ -109,13 +133,11 @@ export default function ConsentForm() {
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="idUpload">Photo of ID</Label>
-        <Input
+        <Label>Photo of ID</Label>
+        <FileInput
           id="idUpload"
-          type="file"
           accept="image/*,.pdf"
           aria-invalid={!!errors.idUpload}
-          className="file:mr-3 file:cursor-pointer file:rounded-lg file:bg-primary file:px-2.5 file:text-primary-foreground file:hover:bg-primary/80"
           {...register('idUpload')}
         />
         <p className="text-xs text-muted-foreground">A photo of the ID named above.</p>
@@ -214,6 +236,8 @@ export default function ConsentForm() {
         <Label htmlFor="tattooArtist">Tattoo artist (optional)</Label>
         <Input id="tattooArtist" placeholder="Who's doing your tattoo today?" {...register('tattooArtist')} />
       </div>
+
+      {submitError && <p className="text-sm text-destructive">{submitError}</p>}
 
       <Button type="submit" disabled={isSubmitting} className="h-11 w-full rounded-lg text-base">
         {isSubmitting ? 'Submitting…' : 'Submit Consent Form'}

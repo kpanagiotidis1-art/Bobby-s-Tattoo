@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button'
 import SectionAccent from '@/components/SectionAccent'
 
-// TODO: replace with the studio's real Google Business Profile review link once it exists.
-const GOOGLE_REVIEWS_URL = 'https://www.google.com/search?q=bobbys+tattoo+studio+reviews'
+// Confirmed by the client 2026-07-19 — the studio's real Google Business Profile review link.
+const GOOGLE_REVIEWS_URL = 'https://g.page/r/CUa9U4nW2EBDEBM/review'
 // TODO: replace with the studio's real Fresha booking-system profile URL once it exists.
 const FRESHA_URL = 'https://www.fresha.com'
 
@@ -16,7 +16,7 @@ export default function ReviewsCta() {
     <section className="border-t border-border px-6 py-24 text-center">
       <h2 className="text-2xl font-semibold tracking-tight">Reviews</h2>
       <SectionAccent className="mt-3" />
-      <p className="mx-auto mt-3 max-w-md text-muted-foreground">
+      <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
         We&apos;re a new studio and just getting started — read (and leave!) reviews on Google.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -28,8 +28,7 @@ export default function ReviewsCta() {
           Read Reviews on Google
         </Button>
         <Button
-          variant="ghost"
-          size="sm"
+          variant="outline"
           nativeButton={false}
           render={<a href={FRESHA_URL} target="_blank" rel="noreferrer" />}
         >

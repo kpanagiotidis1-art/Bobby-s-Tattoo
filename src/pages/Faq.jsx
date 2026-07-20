@@ -4,7 +4,7 @@ import { FAQ_ITEMS } from '@/constants/faq'
 
 export default function Faq() {
   return (
-    <section className="mx-auto max-w-2xl px-6 py-20">
+    <section className="mx-auto max-w-3xl px-6 py-20">
       <Seo
         title="FAQ"
         description="Answers to common questions about booking, pricing, deposits, and what to expect at Bobby's Tattoo Studio."
@@ -14,11 +14,15 @@ export default function Faq() {
         Can&apos;t find what you&apos;re looking for? Reach out through our contact form.
       </p>
 
-      <Accordion className="mt-12">
+      <Accordion className="mt-12" defaultValue={[FAQ_ITEMS[0].id]}>
         {FAQ_ITEMS.map((item) => (
           <AccordionItem key={item.id} value={item.id}>
             <AccordionTrigger>{item.question}</AccordionTrigger>
-            <AccordionContent>{item.answer}</AccordionContent>
+            <AccordionContent>
+              {item.answer.split('\n\n').map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

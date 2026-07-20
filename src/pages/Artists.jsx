@@ -9,7 +9,7 @@ import Seo from '@/components/Seo'
 // being disabled in src/app/routes.jsx for the same reason.
 export default function Artists() {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-32 text-center">
+    <section className="mx-auto max-w-5xl px-6 py-32 text-center">
       <Seo
         title="Our Artists"
         description="Meet the artists at Bobby's Tattoo Studio in Darlinghurst, Sydney — coming soon."
@@ -22,7 +22,7 @@ export default function Artists() {
 
   /* Real implementation — restore once artists exist:
   return (
-    <section className="mx-auto max-w-4xl px-6 py-20">
+    <section className="mx-auto max-w-5xl px-6 py-20">
       <Seo
         title="Our Artists"
         description="Meet the artists at Bobby's Tattoo Studio in Darlinghurst, Sydney and find the right fit for your next tattoo."
@@ -35,7 +35,13 @@ export default function Artists() {
           <Link key={artist.slug} to={`/artists/${artist.slug}`} className="group text-center">
             <div className="aspect-square w-full rounded-xl bg-muted transition-opacity group-hover:opacity-80" />
             <h2 className="mt-4 text-lg font-semibold tracking-tight">{artist.name}</h2>
-            <p className="mt-1 text-sm text-muted-foreground">{artist.styles.join(' · ')}</p>
+            <div className="mt-1.5 flex flex-wrap justify-center gap-1.5">
+              {artist.styles.map((style) => (
+                <span key={style} className="rounded-full border border-brand px-2 py-0.5 text-xs text-brand">
+                  {style}
+                </span>
+              ))}
+            </div>
             <p className="mt-2 text-sm text-muted-foreground">{artist.shortBio}</p>
           </Link>
         ))}

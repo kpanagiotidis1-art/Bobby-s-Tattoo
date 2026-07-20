@@ -7,7 +7,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' })
 
 export default function Blog() {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-20">
+    <section className="mx-auto max-w-5xl px-6 py-20">
       <Seo
         title="Blog"
         description="Tattoo care, style guides, and studio news from Bobby's Tattoo Studio in Darlinghurst, Sydney."

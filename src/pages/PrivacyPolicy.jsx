@@ -218,7 +218,7 @@ For your own privacy and security, at our discretion, we may require you to prov
 
 export default function PrivacyPolicy() {
   return (
-    <article className="mx-auto max-w-2xl px-6 py-20">
+    <article className="mx-auto max-w-3xl px-6 py-20">
       <Seo title="Privacy Policy" noindex />
       <h1 className="text-3xl font-semibold tracking-tight">Privacy Policy</h1>
       <p className="mt-3 text-sm text-muted-foreground">Last updated: to be confirmed before launch.</p>

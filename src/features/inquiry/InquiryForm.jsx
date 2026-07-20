@@ -5,10 +5,13 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { FileInput } from '@/components/ui/file-input'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Textarea } from '@/components/ui/textarea'
+import { supabase } from '@/lib/supabase'
+import { CONTACT_EMAIL } from '@/constants/nav'
 import { inquirySchema } from './schema'
 
 const HEAR_ABOUT_US_OPTIONS = ['Instagram', 'Google', 'Referral from Friend or Relative', 'Other']
@@ -26,6 +29,7 @@ function Field({ label, htmlFor, helperText, error, children }) {
 
 export default function InquiryForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
   // Artist prefill disabled alongside the Artists section (2026-07-15) — this
   // used to read /?artist=Name#contact from "Book with {artist}" links.
   // Restore together with ArtistDetail/routes.jsx once artists exist:
@@ -47,13 +51,34 @@ export default function InquiryForm() {
     },
   })
 
-  // TODO: once Supabase is wired up, this should insert into an `inquiries` table
-  // (with file uploads going to Storage) and trigger an edge function that emails
-  // the studio + a confirmation to the customer. For now it only validates
-  // client-side, so the studio isn't receiving anything yet.
   const onSubmit = async (data) => {
-    console.log('Inquiry submitted (not yet sent anywhere):', data)
-    await new Promise((resolve) => setTimeout(resolve, 400))
+    setSubmitError(null)
+
+    const formData = new FormData()
+    formData.append('firstName', data.firstName)
+    formData.append('lastName', data.lastName)
+    formData.append('email', data.email)
+    formData.append('phone', data.phone)
+    formData.append('clientType', data.clientType)
+    formData.append('dateOfBirth', data.dateOfBirth)
+    formData.append('tattooPlacement', data.tattooPlacement)
+    formData.append('tattooSize', data.tattooSize)
+    formData.append('tattooDescription', data.tattooDescription)
+    if (data.skinConditions) formData.append('skinConditions', data.skinConditions)
+    if (data.preferredDays) formData.append('preferredDays', data.preferredDays)
+    if (data.desiredDates) formData.append('desiredDates', data.desiredDates)
+    if (data.instagramHandle) formData.append('instagramHandle', data.instagramHandle)
+    for (const option of data.hearAboutUs ?? []) formData.append('hearAboutUs', option)
+    for (const file of data.referenceImages ?? []) formData.append('referenceImages', file)
+    for (const file of data.tattooAreaImages ?? []) formData.append('tattooAreaImages', file)
+
+    const { error } = await supabase.functions.invoke('submit-inquiry', { body: formData })
+
+    if (error) {
+      setSubmitError(`Something went wrong sending your inquiry — please try again or email us directly at ${CONTACT_EMAIL}.`)
+      return
+    }
+
     setSubmitted(true)
   }
 
@@ -69,9 +94,9 @@ export default function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="mx-auto max-w-md space-y-10 text-left">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="mx-auto max-w-xl space-y-10 text-left">
       <fieldset className="space-y-5">
-        <legend className="text-sm font-semibold tracking-tight">Your Details</legend>
+        <legend className="text-lg font-semibold tracking-tight">Your Details</legend>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label="First name" htmlFor="firstName" error={errors.firstName}>
@@ -116,7 +141,7 @@ export default function InquiryForm() {
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="text-sm font-semibold tracking-tight">Your Tattoo</legend>
+        <legend className="text-lg font-semibold tracking-tight">Your Tattoo</legend>
 
         {/* Preferred artist field disabled alongside the Artists section
             (2026-07-15) — restore together once real artists exist.
@@ -159,30 +184,24 @@ export default function InquiryForm() {
 
         <Field
           label="Reference images (optional)"
-          htmlFor="referenceImages"
           helperText="Previous work, flash, other art, or rough sketches — anything that helps visualise the concept."
         >
-          <Input
+          <FileInput
             id="referenceImages"
-            type="file"
             accept="image/*,video/*"
             multiple
-            className="file:mr-3 file:cursor-pointer file:rounded-lg file:bg-primary file:px-2.5 file:text-primary-foreground file:hover:bg-primary/80"
             {...register('referenceImages')}
           />
         </Field>
 
         <Field
           label="Tattoo area photo (optional)"
-          htmlFor="tattooAreaImages"
           helperText="A clear photo of where you want the tattoo — circling or boxing the area helps indicate placement and size. Can be sent later."
         >
-          <Input
+          <FileInput
             id="tattooAreaImages"
-            type="file"
             accept="image/*,video/*"
             multiple
-            className="file:mr-3 file:cursor-pointer file:rounded-lg file:bg-primary file:px-2.5 file:text-primary-foreground file:hover:bg-primary/80"
             {...register('tattooAreaImages')}
           />
         </Field>
@@ -197,7 +216,7 @@ export default function InquiryForm() {
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="text-sm font-semibold tracking-tight">Availability</legend>
+        <legend className="text-lg font-semibold tracking-tight">Availability</legend>
 
         <Field
           label="Preferred days (optional)"
@@ -217,7 +236,7 @@ export default function InquiryForm() {
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="text-sm font-semibold tracking-tight">A Little More</legend>
+        <legend className="text-lg font-semibold tracking-tight">A Little More</legend>
 
         <div className="space-y-2">
           <Label>How did you hear about us? (optional)</Label>
@@ -252,6 +271,8 @@ export default function InquiryForm() {
           <Input id="instagramHandle" placeholder="@yourhandle" {...register('instagramHandle')} />
         </Field>
       </fieldset>
+
+      {submitError && <p className="text-sm text-destructive">{submitError}</p>}
 
       <Button type="submit" disabled={isSubmitting} className="h-11 w-full rounded-lg text-base">
         {isSubmitting ? 'Sending…' : 'Send Inquiry'}

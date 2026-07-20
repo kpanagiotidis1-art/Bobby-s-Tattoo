@@ -6,6 +6,11 @@ export const ABN = '54 677 522 548'
 export const STUDIO_ADDRESS = '100 Oxford Street, Oxford & Foley Precinct, Darlinghurst NSW 2010'
 export const STUDIO_HOURS = 'Monday – Sunday, 10am – 7pm'
 
+// Confirmed by the client 2026-07-19. Display format for the UI, E.164 for
+// tel: links and structured data (schema.org prefers a fully-qualified number).
+export const STUDIO_PHONE = '0458 894 468'
+export const STUDIO_PHONE_TEL = '+61458894468'
+
 // Discrete address fields for structured data (LocalBusiness JSON-LD) —
 // kept separate from the display string above so schema.org's PostalAddress
 // doesn't need to parse it back apart.

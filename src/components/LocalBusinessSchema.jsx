@@ -1,13 +1,12 @@
 import { Helmet } from 'react-helmet-async'
 import { CONTACT_EMAIL, INSTAGRAM_URL } from '@/constants/nav'
 import { SITE_NAME, SITE_URL } from '@/constants/seo'
-import { STUDIO_ADDRESS_PARTS } from '@/constants/business'
+import { STUDIO_ADDRESS_PARTS, STUDIO_PHONE_TEL } from '@/constants/business'
 
 // Site-wide LocalBusiness structured data (JSON-LD) — helps Google understand
 // this is a real local business for map/local-pack results. Rendered once in
 // PublicLayout, not on the standalone Consent route (which is noindexed
-// anyway). Phone number omitted until the client provides one — better to
-// leave it out than publish a wrong one.
+// anyway).
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
@@ -15,6 +14,7 @@ export default function LocalBusinessSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     email: CONTACT_EMAIL,
+    telephone: STUDIO_PHONE_TEL,
     address: {
       '@type': 'PostalAddress',
       ...STUDIO_ADDRESS_PARTS,

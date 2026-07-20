@@ -27,3 +27,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Output from scripts/screenshot-audit.mjs
+.screenshots/
+
+.vercel
+.env*

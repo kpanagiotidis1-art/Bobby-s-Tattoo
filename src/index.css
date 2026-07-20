@@ -35,6 +35,7 @@
     --color-secondary: var(--secondary);
     --color-primary-foreground: var(--primary-foreground);
     --color-primary: var(--primary);
+    --color-primary-hover: var(--primary-hover);
     --color-popover-foreground: var(--popover-foreground);
     --color-popover: var(--popover);
     --color-card-foreground: var(--card-foreground);
@@ -51,30 +52,45 @@
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
+    /* "Earthy Minimal" (Option 3), per Bobby (2026-07-19) — supersedes the
+       previous boutique-hotel attempt. Kept as hex rather than converted to
+       oklch like the rest of this file, so values stay pixel-accurate to
+       what he specified. */
+    /* Darkened twice now from the original #F5F2ED spec — the first pass
+       (#F0EAE1) still read as too light. This is now noticeably past the
+       "Light Beige" (--muted) tone rather than just splitting the
+       difference with it — flag it if muted panels (footer etc.) start
+       blending into the page background instead of reading as recessed. */
+    --background: #E6D8C3;
+    --foreground: #4A4038; /* "Dark Brown" — body text; softer than near-black */
+    --card: #ECE4D8; /* "Light Beige" — same tone as --muted, replacing plain white */
+    --card-foreground: #4A4038;
+    --popover: #ECE4D8;
+    --popover-foreground: #4A4038;
+    /* CTA buttons are deliberately near-black (punchier than the brown body
+       text), turning gold on hover — an explicit exception in his spec, not
+       an inconsistency. */
+    --primary: #1F1F1F;
+    --primary-foreground: #FFFFFF;
+    --primary-hover: #B58A52;
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
+    --muted: #ECE4D8; /* "Light Beige" */
+    --muted-foreground: #8A7868; /* "Taupe" */
     --accent: oklch(0.97 0 0);
     --accent-foreground: oklch(0.205 0 0);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
+    /* Dividers: his gold-tinted option rather than the flat grey alternative
+       he also offered — "subtly carries the gold throughout the page," per
+       his own framing. Flip to solid #DDD5CB if that reads too subtle. */
+    --border: rgba(181, 138, 82, 0.35);
+    --input: rgba(181, 138, 82, 0.35);
     --ring: oklch(0.708 0 0);
-    /* Single restrained accent — used sparingly (small labels, subtle
-       highlights), never for primary buttons or body text. Keeps the site
-       black/white-led per the brief's "not dark, not over-designed" brief,
-       with one deliberate warm note instead of a full color palette. */
-    --brand: oklch(0.72 0.11 75);
-    --brand-foreground: oklch(0.205 0 0);
+    /* Same gold as the CTA hover — this small accent rule (SectionAccent),
+       icons (location pin, Instagram, FAQ chevrons, artist tags), and
+       button hovers all share one consistent gold now. */
+    --brand: #B58A52;
+    --brand-foreground: #FFFFFF;
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);

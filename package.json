@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -35,6 +36,10 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "oxlint": "^1.71.0",
+    "playwright": "^1.61.1",
+    "sharp": "^0.35.3",
+    "supabase": "^2.109.1",
+    "vercel": "^56.3.2",
     "vite": "^8.1.1"
   }
 }

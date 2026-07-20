@@ -13,7 +13,7 @@ export default function ArtistDetail() {
   const bookingLink = `/?artist=${encodeURIComponent(artist.name)}#contact`
 
   return (
-    <article className="mx-auto max-w-2xl px-6 py-20">
+    <article className="mx-auto max-w-3xl px-6 py-20">
       {/* noindex until this is a real artist — see src/constants/artists.js */}
       <Seo
         title={artist.name}
@@ -27,9 +27,15 @@ export default function ArtistDetail() {
       <div className="mt-6 text-center">
         <div className="mx-auto aspect-square w-40 rounded-xl bg-muted" />
         <h1 className="mt-6 text-3xl font-semibold tracking-tight">{artist.name}</h1>
-        <p className="mt-1 text-muted-foreground">{artist.styles.join(' · ')}</p>
+        <div className="mt-2 flex flex-wrap justify-center gap-2">
+          {artist.styles.map((style) => (
+            <span key={style} className="rounded-full border border-brand px-2.5 py-0.5 text-xs text-brand">
+              {style}
+            </span>
+          ))}
+        </div>
 
-        <p className="mx-auto mt-6 max-w-md text-muted-foreground">{artist.bio}</p>
+        <p className="mx-auto mt-6 max-w-lg text-muted-foreground">{artist.bio}</p>
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Button size="lg" nativeButton={false} render={<Link to={bookingLink} />}>

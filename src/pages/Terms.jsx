@@ -178,7 +178,7 @@ Questions about these Terms can be sent to ${CONTACT_EMAIL}.`,
 
 export default function Terms() {
   return (
-    <article className="mx-auto max-w-2xl px-6 py-20">
+    <article className="mx-auto max-w-3xl px-6 py-20">
       <Seo title="Terms of Service" noindex />
       <h1 className="text-3xl font-semibold tracking-tight">Terms of Service</h1>
       <p className="mt-3 text-sm text-muted-foreground">Last updated: to be confirmed before launch.</p>

@@ -12,7 +12,7 @@ export default function BlogPost() {
   if (!post) return <NotFound />
 
   return (
-    <article className="mx-auto max-w-2xl px-6 py-20">
+    <article className="mx-auto max-w-3xl px-6 py-20">
       <Seo title={post.title} description={post.excerpt} />
       <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground">
         &larr; Back to blog

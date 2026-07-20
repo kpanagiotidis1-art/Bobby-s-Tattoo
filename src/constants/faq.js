@@ -13,8 +13,10 @@ export const FAQ_ITEMS = [
   {
     id: 'rates',
     question: 'What are your rates?',
+    // Real price guide received from the client 2026-07-19 — replaces the
+    // earlier placeholder $250 figure with his actual numbers and wording.
     answer:
-      'Our studio minimum is $250. Beyond that, pricing depends on the artist, size, detail, and placement of the piece — booking and flash pieces are each priced individually, and we’ll give you an accurate quote once we’ve received your details through the inquiry form.',
+      'Our studio minimum is $200. A studio minimum is in place to cover our time, as the set-up and equipment needed are the same for every tattoo, no matter how big or small — pricing varies from there depending on the piece, size, detail, and placement. The minimum generally covers very small tattoos under an hour, such as small single-word scripts, small numbers, or small single-line/outline designs.\n\nBeyond that, pricing varies for every artist. We’ll give you a general estimate based on the details in your inquiry, and may ask follow-up questions to help narrow it down. Some artists charge a flat rate and others charge by the hour, so get in touch for an artist’s specific rates — hourly rates generally range from $150–$350.',
   },
   {
     id: 'deposit',
