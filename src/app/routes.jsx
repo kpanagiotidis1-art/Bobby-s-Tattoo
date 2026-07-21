@@ -15,6 +15,7 @@ const Artists = lazy(() => import('@/pages/Artists'))
 // with no links to it, so this route would be orphaned. Restore alongside
 // Artists.jsx's real implementation once there are actual artists.
 // const ArtistDetail = lazy(() => import('@/pages/ArtistDetail'))
+const Inquiry = lazy(() => import('@/pages/Inquiry'))
 const Faq = lazy(() => import('@/pages/Faq'))
 const Blog = lazy(() => import('@/pages/Blog'))
 const BlogPost = lazy(() => import('@/pages/BlogPost'))
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/artists', element: <Artists /> },
       // { path: '/artists/:slug', element: <ArtistDetail /> },
+      { path: '/inquiry', element: <Inquiry /> },
       { path: '/faq', element: <Faq /> },
       { path: '/blog', element: <Blog /> },
       { path: '/blog/:slug', element: <BlogPost /> },

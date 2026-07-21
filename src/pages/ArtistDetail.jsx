@@ -10,7 +10,7 @@ export default function ArtistDetail() {
 
   if (!artist) return <NotFound />
 
-  const bookingLink = `/?artist=${encodeURIComponent(artist.name)}#contact`
+  const bookingLink = `/inquiry?artist=${encodeURIComponent(artist.name)}`
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-20">

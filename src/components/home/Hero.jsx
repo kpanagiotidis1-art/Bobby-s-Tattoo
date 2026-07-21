@@ -35,7 +35,7 @@ export default function Hero() {
             size="lg"
             nativeButton={false}
             className="h-11 rounded-lg bg-white px-8 text-base text-black hover:bg-white/90"
-            render={<Link to="/#contact" />}
+            render={<Link to="/inquiry" />}
           >
             Start Your Inquiry
           </Button>
