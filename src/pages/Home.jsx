@@ -18,7 +18,7 @@ export default function Home() {
       <ReviewsCta />
 
       <section id="contact" className="scroll-mt-20 border-t border-border px-6 py-24 text-center">
-        <h2 className="text-2xl font-semibold tracking-tight">Get In Touch</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">get in touch</h2>
         <SectionAccent className="mt-3" />
         <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
           Tell us about the tattoo you have in mind. We review every inquiry personally and reply by

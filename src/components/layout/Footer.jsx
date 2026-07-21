@@ -34,10 +34,10 @@ export default function Footer() {
           </a>
           <p className="text-sm text-muted-foreground">{STUDIO_HOURS}</p>
           <a href={`tel:${STUDIO_PHONE_TEL}`} className="mt-1 block w-fit text-sm text-muted-foreground hover:text-foreground">
-            {STUDIO_PHONE}
+            P: {STUDIO_PHONE}
           </a>
           <a href={`mailto:${CONTACT_EMAIL}`} className="mt-1 block w-fit text-sm text-muted-foreground hover:text-foreground">
-            {CONTACT_EMAIL}
+            E: {CONTACT_EMAIL}
           </a>
         </div>
 

@@ -14,7 +14,7 @@ const FRESHA_URL = 'https://www.fresha.com'
 export default function ReviewsCta() {
   return (
     <section className="border-t border-border px-6 py-24 text-center">
-      <h2 className="text-2xl font-semibold tracking-tight">Reviews</h2>
+      <h2 className="text-2xl font-semibold tracking-tight">reviews</h2>
       <SectionAccent className="mt-3" />
       <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
         We&apos;re a new studio and just getting started — read (and leave!) reviews on Google.

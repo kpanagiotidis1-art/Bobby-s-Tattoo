@@ -35,7 +35,7 @@ export default function InstagramGrid() {
   return (
     <section className="border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl text-center">
-        <h2 className="text-2xl font-semibold tracking-tight">Recent Work</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">recently at bobby&apos;s</h2>
         <SectionAccent className="mt-3" />
         <p className="mt-3 text-muted-foreground">
           A selection of recent work from the studio. Follow Instagram for the latest pieces.
