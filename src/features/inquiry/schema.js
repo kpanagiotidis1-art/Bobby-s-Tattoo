@@ -18,8 +18,8 @@ export const inquirySchema = z.object({
   // see src/features/inquiry/InquiryForm.jsx. Restore together.
   // preferredArtist: z.string().trim().optional(),
 
-  clientType: z.enum(['New Client', 'Returning Client'], {
-    message: 'Let us know if you’re a new or returning client',
+  clientType: z.enum(['New Client', 'Returning Client', 'PMU / Cosmetic Tattoo Client'], {
+    message: 'Let us know what kind of client you are',
   }),
   dateOfBirth: z.string().min(1, 'Enter your date of birth'),
 

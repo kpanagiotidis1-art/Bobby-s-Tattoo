@@ -21,6 +21,8 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:justify-between">
         <div>
           <img src={logo} alt="Bobby's Tattoo Studio" className="h-7 w-auto" />
+          <p className="mt-3 text-sm text-muted-foreground">Walk-ins Welcome</p>
+          <p className="text-sm text-muted-foreground">For a Consultation - please email</p>
           <a
             href={GOOGLE_MAPS_URL}
             target="_blank"

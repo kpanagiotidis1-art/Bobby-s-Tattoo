@@ -85,7 +85,7 @@ Deno.serve(async (req) => {
     const instagramHandle = optionalString(form, 'instagramHandle')
     const hearAboutUs = form.getAll('hearAboutUs').filter((v): v is string => typeof v === 'string')
 
-    if (!['New Client', 'Returning Client'].includes(clientType)) {
+    if (!['New Client', 'Returning Client', 'PMU / Cosmetic Tattoo Client'].includes(clientType)) {
       throw new ValidationError('Invalid client type')
     }
 

@@ -13,6 +13,7 @@ import {
 import InstagramIcon from '@/components/icons/InstagramIcon'
 import { INSTAGRAM_URL, NAV_LINKS } from '@/constants/nav'
 import logo from '@/assets/logo/logo-black.png'
+import logoMark from '@/assets/logo/logo-mark-white.png'
 
 // Hash links (e.g. "Contact" -> /#contact) point at a scroll target within
 // Home, not a separate route — NavLink's own active-matching only looks at
@@ -83,7 +84,7 @@ export default function Header() {
     <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link to="/" className="shrink-0">
-          <img src={logo} alt="Bobby's Tattoo Studio" className="h-8 w-auto" />
+          <img src={logoMark} alt="Bobby's Tattoo Studio" className="h-8 w-auto" />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">

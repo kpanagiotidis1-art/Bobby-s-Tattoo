@@ -50,8 +50,11 @@ export const FAQ_ITEMS = [
   {
     id: 'walk-ins',
     question: 'Do you take walk-ins?',
+    // Updated per client 2026-07-20 — walk-ins are welcome (was previously
+    // "generally no, by appointment"). Keep this in sync with the footer's
+    // "Walk-ins Welcome" line if either changes again.
     answer:
-      'Generally no — we work by appointment. Cancellations occasionally open up last-minute spots, which we post on Instagram, so keep an eye out.',
+      'Yes, walk-ins are welcome! For anything larger or more custom, we\'d still recommend getting in touch beforehand so we can set aside the right amount of time for it.',
   },
   {
     id: 'flash',

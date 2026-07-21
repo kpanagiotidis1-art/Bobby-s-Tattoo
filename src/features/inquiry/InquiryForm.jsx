@@ -121,13 +121,13 @@ export default function InquiryForm() {
         </div>
 
         <div className="space-y-2">
-          <Label>Are you a new or returning client?</Label>
+          <Label>What kind of client are you?</Label>
           <Controller
             control={control}
             name="clientType"
             render={({ field }) => (
-              <RadioGroup value={field.value ?? ''} onValueChange={field.onChange} className="flex gap-6">
-                {['New Client', 'Returning Client'].map((option) => (
+              <RadioGroup value={field.value ?? ''} onValueChange={field.onChange} className="flex flex-wrap gap-x-6 gap-y-2">
+                {['New Client', 'Returning Client', 'PMU / Cosmetic Tattoo Client'].map((option) => (
                   <label key={option} className="flex items-center gap-2 text-sm">
                     <RadioGroupItem value={option} />
                     {option}

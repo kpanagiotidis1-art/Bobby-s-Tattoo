@@ -149,6 +149,12 @@
     }
   body {
     @apply bg-background text-foreground;
+    /* Thinner body/description weight per client feedback (2026-07-20), for
+       more contrast against bold headings. Geist is a variable font with a
+       full weight range, so this is a plain weight change, not a new font —
+       explicit font-medium/semibold/bold utility classes on headings still
+       override this via Tailwind's layer ordering. */
+    font-weight: 350;
     }
   html {
     @apply font-sans;
