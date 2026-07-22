@@ -15,22 +15,6 @@ export default function Home() {
       <Seo />
       <Hero />
 
-      {/* Tagline + CTA used to be overlaid on the hero photo — moved to its
-          own section per client feedback 2026-07-22. */}
-      <section className="border-t border-border px-6 py-16 text-center">
-        <p className="text-lg text-foreground">every piece starts with a conversation</p>
-        <div className="mt-4">
-          <Button
-            size="lg"
-            nativeButton={false}
-            className="bg-foreground text-background hover:bg-foreground/90"
-            render={<Link to="/inquiry" viewTransition />}
-          >
-            start your inquiry
-          </Button>
-        </div>
-      </section>
-
       <About />
       <InstagramGrid />
       <ReviewsCta />

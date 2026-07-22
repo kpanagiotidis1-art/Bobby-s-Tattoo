@@ -199,3 +199,36 @@
     opacity: 1;
   }
 }
+
+/* Home hero (src/components/home/Hero.jsx): fills the full viewport height
+   on every screen. Two source images share this same full-bleed treatment —
+   see the `.hero-img-*` rules below for why. */
+.hero-fill {
+  height: 100vh;
+}
+
+/* hero-final.png bakes in a large logo (629px wide in a 1600px-wide photo),
+   safe to crop tightly only down to roughly a square aspect ratio before the
+   sides clip into it. hero-final-mobile.png is a version built from the
+   client's raw (un-composited) ceiling photo with the same logo scaled down
+   to 280px and re-centered, small enough to survive a true full-screen crop
+   even on narrow phones. Swapping between them on aspect ratio (not a width
+   breakpoint) — a portrait tablet can be as wide as a landscape desktop
+   breakpoint but needs the phone-safe image, not the wide one. */
+.hero-img-wide {
+  display: none;
+}
+
+.hero-img-mobile {
+  display: block;
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .hero-img-wide {
+    display: block;
+  }
+
+  .hero-img-mobile {
+    display: none;
+  }
+}
