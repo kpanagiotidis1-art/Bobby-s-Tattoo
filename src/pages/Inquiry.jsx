@@ -6,7 +6,7 @@ export default function Inquiry() {
     <section className="mx-auto max-w-3xl px-6 py-20">
       <Seo
         title="Book Now"
-        description="Submit an inquiry to Bobby's Tattoo Studio — tell us about the tattoo you have in mind and we'll get back to you by email."
+        description="Submit an inquiry to Bobby's Tattoo — tell us about the tattoo you have in mind and we'll get back to you by email."
       />
       <h1 className="text-center text-3xl font-semibold tracking-tight">Book Now</h1>
       <p className="mt-3 text-center text-muted-foreground">

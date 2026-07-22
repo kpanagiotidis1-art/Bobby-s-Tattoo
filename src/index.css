@@ -160,3 +160,42 @@
     @apply font-sans;
     }
 }
+
+/* Smooth page-to-page transitions via the native View Transitions API,
+   opted into per-link with React Router's `viewTransition` prop. Browsers
+   without support (older Firefox) just navigate instantly — no fallback
+   needed. Overriding the default cross-fade+scale with a plain, slightly
+   slower fade to match the site's calm, minimal feel rather than Chrome's
+   default "zoom" morph. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.22s;
+  animation-timing-function: ease-out;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation-name: bobbys-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: bobbys-fade-in;
+}
+
+@keyframes bobbys-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes bobbys-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

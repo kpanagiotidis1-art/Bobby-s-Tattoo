@@ -60,10 +60,11 @@ function useActiveHash() {
   return activeHash
 }
 
+// Both the floating homepage bubble and the solid bar on every other page
+// are dark now (contrast per client feedback 2026-07-22), so nav links are
+// always light-on-dark.
 const navLinkClass = (isActive) =>
-  `text-sm font-medium transition-colors hover:text-foreground ${
-    isActive ? 'text-foreground' : 'text-muted-foreground'
-  }`
+  `text-sm font-medium transition-colors hover:text-background ${isActive ? 'text-background' : 'text-background/70'}`
 
 const mobileNavLinkClass = (isActive) =>
   `block border-b border-border py-4 text-lg font-medium tracking-tight last:border-none ${
@@ -78,69 +79,104 @@ function isLinkActive(link, routeIsActive, activeHash) {
 }
 
 export default function Header() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
   const activeHash = useActiveHash()
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur">
-      <div className="flex h-16 items-center justify-between px-6 sm:px-8">
-        <Link to="/" className="shrink-0">
-          <img src={logoMark} alt="Bobby's Tattoo Studio" className="h-8 w-auto" />
+    <header
+      className={
+        isHome
+          ? 'fixed inset-x-4 top-4 z-40 sm:inset-x-6'
+          : 'sticky top-0 z-30 border-b border-white/10 bg-foreground/95 shadow-sm backdrop-blur'
+      }
+    >
+      <div className={`flex items-center justify-between ${isHome ? 'h-14' : 'h-16 px-6 sm:px-8'}`}>
+        {/* Its own separate little bubble, not merged with the nav's. */}
+        <Link
+          to="/"
+          viewTransition
+          className={
+            isHome
+              ? 'flex size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/25 shadow-lg backdrop-blur-md'
+              : 'shrink-0'
+          }
+        >
+          <img src={logoMark} alt="Bobby's Tattoo" className="h-8 w-auto" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) => navLinkClass(isLinkActive(link, isActive, activeHash))}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+        {/* Only the nav itself is the floating "bubble" on the homepage —
+            the logo stays in its own separate bubble, not merged with this. */}
+        <div
+          className={
+            isHome
+              ? 'flex items-center gap-2 rounded-full border border-white/15 bg-black/25 p-2 shadow-lg backdrop-blur-md md:py-3 md:pr-3 md:pl-8'
+              : 'contents'
+          }
+        >
+          <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+            {NAV_LINKS.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                viewTransition
+                className={({ isActive }) => navLinkClass(isLinkActive(link, isActive, activeHash))}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
 
-        <Sheet>
-          <SheetTrigger
-            render={<Button variant="ghost" size="icon" className="md:hidden" />}
-          >
-            <Menu />
-            <span className="sr-only">Open menu</span>
-          </SheetTrigger>
-          <SheetContent className="flex flex-col">
-            <SheetHeader className="border-b border-border">
-              <SheetTitle>
-                <img src={logo} alt="Bobby's Tattoo Studio" className="h-7 w-auto" />
-              </SheetTitle>
-            </SheetHeader>
-            <nav aria-label="Mobile" className="flex flex-1 flex-col px-4">
-              {NAV_LINKS.map((link) => (
-                <SheetClose
-                  key={link.to}
-                  nativeButton={false}
-                  render={
-                    <NavLink
-                      to={link.to}
-                      className={({ isActive }) =>
-                        mobileNavLinkClass(isLinkActive(link, isActive, activeHash))
-                      }
-                    />
-                  }
-                >
-                  {link.label}
-                </SheetClose>
-              ))}
-            </nav>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 border-t border-border p-4 text-sm text-muted-foreground"
+          <Sheet>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-background hover:bg-background/10 hover:text-background md:hidden"
+                />
+              }
             >
-              <InstagramIcon className="size-4 text-brand" />
-              Instagram
-            </a>
-          </SheetContent>
-        </Sheet>
+              <Menu />
+              <span className="sr-only">Open menu</span>
+            </SheetTrigger>
+            <SheetContent className="flex flex-col">
+              <SheetHeader className="border-b border-border">
+                <SheetTitle>
+                  <img src={logo} alt="Bobby's Tattoo" className="h-7 w-auto" />
+                </SheetTitle>
+              </SheetHeader>
+              <nav aria-label="Mobile" className="flex flex-1 flex-col px-4">
+                {NAV_LINKS.map((link) => (
+                  <SheetClose
+                    key={link.to}
+                    nativeButton={false}
+                    render={
+                      <NavLink
+                        to={link.to}
+                        viewTransition
+                        className={({ isActive }) =>
+                          mobileNavLinkClass(isLinkActive(link, isActive, activeHash))
+                        }
+                      />
+                    }
+                  >
+                    {link.label}
+                  </SheetClose>
+                ))}
+              </nav>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 border-t border-border p-4 text-sm text-muted-foreground"
+              >
+                <InstagramIcon className="size-4 text-brand" />
+                Instagram
+              </a>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   )

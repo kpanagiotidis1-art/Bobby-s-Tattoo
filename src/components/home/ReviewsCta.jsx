@@ -13,7 +13,7 @@ const FRESHA_URL = 'https://www.fresha.com'
 // Revisit once there's real review volume — see README "Architecture notes".
 export default function ReviewsCta() {
   return (
-    <section className="border-t border-border px-6 py-24 text-center">
+    <section className="border-t border-border bg-muted px-6 py-24 text-center">
       <h2 className="text-2xl font-semibold tracking-tight">reviews</h2>
       <SectionAccent className="mt-3" />
       <p className="mx-auto mt-3 max-w-lg text-muted-foreground">

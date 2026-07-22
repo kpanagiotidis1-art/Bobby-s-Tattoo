@@ -11,32 +11,36 @@ import {
   STUDIO_PHONE,
   STUDIO_PHONE_TEL,
 } from '@/constants/business'
-import logo from '@/assets/logo/logo-black.png'
+import logo from '@/assets/logo/logo-white.png'
 
+// Dark for contrast against the light body background, per client feedback
+// 2026-07-22 — was previously unstyled and blended straight into the page.
+// Uses --foreground ("Dark Brown") rather than --primary (near-black): the
+// first attempt at near-black read as clashing with the earthy brown palette.
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border">
+    <footer className="bg-foreground text-background">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:justify-between">
         <div>
-          <img src={logo} alt="Bobby's Tattoo Studio" className="h-7 w-auto" />
-          <p className="mt-3 text-sm text-muted-foreground">Walk-ins Welcome</p>
-          <p className="text-sm text-muted-foreground">For a Consultation - please email</p>
+          <img src={logo} alt="Bobby's Tattoo" className="h-7 w-auto" />
+          <p className="mt-3 text-sm text-background/70">Walk-ins Welcome</p>
+          <p className="text-sm text-background/70">For a Consultation - please email</p>
           <a
             href={GOOGLE_MAPS_URL}
             target="_blank"
             rel="noreferrer"
-            className="mt-3 flex w-fit items-start gap-1.5 text-sm text-muted-foreground hover:text-foreground"
+            className="mt-3 flex w-fit items-start gap-1.5 text-sm text-background/70 hover:text-background"
           >
             <MapPin className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden />
             {STUDIO_ADDRESS}
           </a>
-          <p className="text-sm text-muted-foreground">{STUDIO_HOURS}</p>
-          <a href={`tel:${STUDIO_PHONE_TEL}`} className="mt-1 block w-fit text-sm text-muted-foreground hover:text-foreground">
+          <p className="text-sm text-background/70">{STUDIO_HOURS}</p>
+          <a href={`tel:${STUDIO_PHONE_TEL}`} className="mt-1 block w-fit text-sm text-background/70 hover:text-background">
             P: {STUDIO_PHONE}
           </a>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="mt-1 block w-fit text-sm text-muted-foreground hover:text-foreground">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="mt-1 block w-fit text-sm text-background/70 hover:text-background">
             E: {CONTACT_EMAIL}
           </a>
         </div>
@@ -46,7 +50,8 @@ export default function Footer() {
             <Link
               key={link.to}
               to={link.to}
-              className="inline-flex items-center text-muted-foreground hover:text-foreground"
+              viewTransition
+              className="inline-flex items-center text-background/70 hover:text-background"
             >
               {link.label}
             </Link>
@@ -55,7 +60,7 @@ export default function Footer() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-1.5 text-background/70 hover:text-background"
           >
             <InstagramIcon className="size-4 text-brand" />
             Instagram
@@ -63,16 +68,16 @@ export default function Footer() {
         </nav>
       </div>
 
-      <div className="border-t border-border px-6 py-4">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-background/10 px-6 py-4">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 text-xs text-background/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {year} Bobby&apos;s Tattoo Studio ({LEGAL_ENTITY_NAME}, ABN {ABN}). All rights reserved.
+            &copy; {year} Bobby&apos;s Tattoo ({LEGAL_ENTITY_NAME}, ABN {ABN}). All rights reserved.
           </p>
           <div className="flex gap-4">
-            <Link to="/privacy-policy" className="hover:text-foreground">
+            <Link to="/privacy-policy" viewTransition className="hover:text-background">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="hover:text-foreground">
+            <Link to="/terms" viewTransition className="hover:text-background">
               Terms of Service
             </Link>
           </div>

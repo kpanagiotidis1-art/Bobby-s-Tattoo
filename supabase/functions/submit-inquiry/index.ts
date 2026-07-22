@@ -154,8 +154,8 @@ Deno.serve(async (req) => {
     await sendEmail({
       to: email,
       from: fromAddress,
-      subject: "We've received your inquiry — Bobby's Tattoo Studio",
-      text: `Hi ${firstName},\n\nThanks for reaching out to Bobby's Tattoo Studio — we've received your inquiry and review every one personally. We'll be in touch by email soon.\n\nBobby's Tattoo Studio`,
+      subject: "We've received your inquiry — Bobby's Tattoo",
+      text: `Hi ${firstName},\n\nThanks for reaching out to Bobby's Tattoo — we've received your inquiry and review every one personally. We'll be in touch by email soon.\n\nBobby's Tattoo`,
     })
 
     return new Response(JSON.stringify({ success: true }), {

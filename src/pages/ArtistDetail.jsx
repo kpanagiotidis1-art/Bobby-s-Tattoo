@@ -17,10 +17,10 @@ export default function ArtistDetail() {
       {/* noindex until this is a real artist — see src/constants/artists.js */}
       <Seo
         title={artist.name}
-        description={`${artist.name} — ${artist.styles.join(', ')} tattoo artist at Bobby's Tattoo Studio, Darlinghurst, Sydney.`}
+        description={`${artist.name} — ${artist.styles.join(', ')} tattoo artist at Bobby's Tattoo, Darlinghurst, Sydney.`}
         noindex
       />
-      <Link to="/artists" className="text-sm text-muted-foreground hover:text-foreground">
+      <Link to="/artists" viewTransition className="text-sm text-muted-foreground hover:text-foreground">
         &larr; Back to artists
       </Link>
 
@@ -38,7 +38,7 @@ export default function ArtistDetail() {
         <p className="mx-auto mt-6 max-w-lg text-muted-foreground">{artist.bio}</p>
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Button size="lg" nativeButton={false} render={<Link to={bookingLink} />}>
+          <Button size="lg" nativeButton={false} render={<Link to={bookingLink} viewTransition />}>
             Book with {artist.name.split(' ')[0]}
           </Button>
           <Button

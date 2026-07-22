@@ -1,3 +1,7 @@
+import work01 from '@/assets/instagram/work-01.jpg'
+import work03 from '@/assets/instagram/work-03.jpg'
+import work06 from '@/assets/instagram/work-06.jpg'
+
 // Client confirmed (2026-07-13) he's happy for these to be rewritten as
 // original content rather than reused from bobisontattoo.com — reusing
 // identical text across both of his domains risked a duplicate-content SEO
@@ -5,12 +9,18 @@
 // his personal site: his brand is fine-line-specialist, so the studio's blog
 // covers studio-choosing, consultations, and general (multi-style) aftercare
 // instead of competing for his exact "fine line tattoo Sydney" keywords.
+//
+// Cover photos reuse Bobby's real work (same photos as the homepage Instagram
+// grid) rather than stock imagery, since these posts aren't about any one
+// piece — they're generic illustrative shots of studio work.
 export const BLOG_POSTS = [
   {
     slug: 'what-to-expect-at-your-first-tattoo-consultation',
     title: 'What to Expect at Your First Tattoo Consultation',
     excerpt:
       'If you\'ve never been through the inquiry-to-appointment process before, here\'s what actually happens between reaching out and sitting in the chair.',
+    image: work01,
+    imageAlt: 'Fine-line kookaburra tattoo behind the ear',
     publishedAt: '2026-07-13',
     author: 'Bobby\'s Tattoo Studio',
     body: `Getting your first tattoo can feel like a bigger process than it needs to be, mostly because it's unclear what actually happens between "I want a tattoo" and being in the chair. Here's how it works with us.
@@ -37,6 +47,8 @@ The short version: reach out with as much detail as you can, expect a real conve
     title: 'Choosing the Right Tattoo Studio in Sydney: What Actually Matters',
     excerpt:
       'Picking a studio is a different decision from picking an artist — here\'s what\'s worth paying attention to before you commit.',
+    image: work03,
+    imageAlt: 'Horse and script lettering tattoo on the chest',
     publishedAt: '2026-07-13',
     author: 'Bobby\'s Tattoo Studio',
     body: `Sydney has no shortage of tattoo studios, which makes the decision harder, not easier. Picking the right one comes down to a few things that matter more than a nice Instagram feed.
@@ -63,6 +75,8 @@ Ultimately, the right studio is one where the hygiene is obviously excellent, th
     title: 'Tattoo Aftercare in Sydney\'s Climate: A Quick Guide',
     excerpt:
       'Sun, humidity, and beach season all make healing a tattoo in Sydney a bit different to healing one somewhere colder — here\'s the short version.',
+    image: work06,
+    imageAlt: 'Snake tattoo across the collarbone',
     publishedAt: '2026-07-13',
     author: 'Bobby\'s Tattoo Studio',
     body: `Sydney's climate is part of what makes getting tattooed here great, and part of what makes healing one properly a bit trickier. Here's the quick version — for the full rundown, see our dedicated aftercare page.

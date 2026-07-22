@@ -35,7 +35,7 @@ export default function Home() {
           </a>
         </div>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Button nativeButton={false} render={<Link to="/inquiry" />}>
+          <Button nativeButton={false} render={<Link to="/inquiry" viewTransition />}>
             Book Here
           </Button>
           <Button

@@ -14,13 +14,19 @@ export default function BlogPost() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-20">
       <Seo title={post.title} description={post.excerpt} />
-      <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground">
+      <Link to="/blog" viewTransition className="text-sm text-muted-foreground hover:text-foreground">
         &larr; Back to blog
       </Link>
       <p className="mt-6 text-sm text-muted-foreground">
         {post.author} · {dateFormatter.format(new Date(post.publishedAt))}
       </p>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{post.title}</h1>
+
+      <img
+        src={post.image}
+        alt={post.imageAlt}
+        className="mt-8 aspect-[16/9] w-full rounded-xl object-cover"
+      />
 
       {/* Each post's body is written as blank-line-separated blocks, where
           every block except the first/last is "Heading line\nParagraph

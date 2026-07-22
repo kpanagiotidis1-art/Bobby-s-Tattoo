@@ -44,27 +44,35 @@ const SECTIONS = [
 
 export default function Aftercare() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-20">
+    <>
       <Seo
         title="Aftercare"
-        description="Tattoo aftercare instructions from Bobby's Tattoo Studio — how to care for your new tattoo while it heals."
+        description="Tattoo aftercare instructions from Bobby's Tattoo — how to care for your new tattoo while it heals."
       />
-      <h1 className="text-center text-3xl font-semibold tracking-tight">Aftercare</h1>
-      <p className="mt-3 text-center text-muted-foreground">
-        Following this closely gives your tattoo the best chance to heal well and stay looking sharp.
-      </p>
+      <section className="px-6 py-20 text-center">
+        <h1 className="text-3xl font-semibold tracking-tight">Aftercare</h1>
+        <p className="mt-3 text-muted-foreground">
+          Following this closely gives your tattoo the best chance to heal well and stay looking sharp.
+        </p>
+      </section>
 
-      <div className="mt-12 space-y-10">
-        {SECTIONS.map((section) => (
-          <div key={section.heading} className="flex gap-4">
+      {/* Each topic is its own full-width band, alternating background —
+          same rhythm as the homepage's stacked sections — rather than one
+          long list, so a page with six topics doesn't read as a wall of text. */}
+      {SECTIONS.map((section, index) => (
+        <section
+          key={section.heading}
+          className={`border-t border-border px-6 py-12 ${index % 2 === 0 ? 'bg-muted' : ''}`}
+        >
+          <div className="mx-auto flex max-w-3xl gap-4">
             <section.icon className="mt-0.5 size-6 shrink-0 text-brand" aria-hidden />
             <div>
               <h2 className="text-lg font-semibold tracking-tight">{section.heading}</h2>
               <p className="mt-2 text-muted-foreground">{section.body}</p>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
+        </section>
+      ))}
+    </>
   )
 }

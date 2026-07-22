@@ -7,7 +7,7 @@ export default function Faq() {
     <section className="mx-auto max-w-3xl px-6 py-20">
       <Seo
         title="FAQ"
-        description="Answers to common questions about booking, pricing, deposits, and what to expect at Bobby's Tattoo Studio."
+        description="Answers to common questions about booking, pricing, deposits, and what to expect at Bobby's Tattoo."
       />
       <h1 className="text-center text-3xl font-semibold tracking-tight">Frequently Asked Questions</h1>
       <p className="mt-3 text-center text-muted-foreground">

@@ -12,7 +12,7 @@ export default function Artists() {
     <section className="mx-auto max-w-5xl px-6 py-32 text-center">
       <Seo
         title="Our Artists"
-        description="Meet the artists at Bobby's Tattoo Studio in Darlinghurst, Sydney — coming soon."
+        description="Meet the artists at Bobby's Tattoo in Darlinghurst, Sydney — coming soon."
         noindex
       />
       <h1 className="text-3xl font-semibold tracking-tight">Our Artists</h1>
@@ -25,7 +25,7 @@ export default function Artists() {
     <section className="mx-auto max-w-5xl px-6 py-20">
       <Seo
         title="Our Artists"
-        description="Meet the artists at Bobby's Tattoo Studio in Darlinghurst, Sydney and find the right fit for your next tattoo."
+        description="Meet the artists at Bobby's Tattoo in Darlinghurst, Sydney and find the right fit for your next tattoo."
       />
       <h1 className="text-center text-3xl font-semibold tracking-tight">Our Artists</h1>
       <p className="mt-3 text-center text-muted-foreground">Meet the team and find the right fit for your idea.</p>
