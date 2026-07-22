@@ -37,8 +37,9 @@ export default function InstagramGrid() {
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="text-2xl font-semibold tracking-tight">recently at bobby&apos;s</h2>
         <SectionAccent className="mt-3" />
+        {/* Reworded per client feedback 2026-07-22. */}
         <p className="mt-3 text-muted-foreground">
-          A selection of recent work from the studio. Follow Instagram for the latest pieces.
+          follow us on Instagram to see our most recent work and studio updates.
         </p>
 
         {/* 2 columns on small screens so tiles stay a reasonable tap size,
@@ -63,7 +64,7 @@ export default function InstagramGrid() {
           nativeButton={false}
           render={<a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" />}
         >
-          Follow on Instagram
+          follow on Instagram
         </Button>
       </div>
     </section>

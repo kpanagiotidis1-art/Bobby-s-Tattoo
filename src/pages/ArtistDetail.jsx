@@ -21,7 +21,7 @@ export default function ArtistDetail() {
         noindex
       />
       <Link to="/artists" viewTransition className="text-sm text-muted-foreground hover:text-foreground">
-        &larr; Back to artists
+        &larr; back to artists
       </Link>
 
       <div className="mt-6 text-center">
@@ -39,7 +39,7 @@ export default function ArtistDetail() {
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Button size="lg" nativeButton={false} render={<Link to={bookingLink} viewTransition />}>
-            Book with {artist.name.split(' ')[0]}
+            book with {artist.name.split(' ')[0]}
           </Button>
           <Button
             variant="outline"
@@ -53,7 +53,7 @@ export default function ArtistDetail() {
       </div>
 
       <div className="mt-16">
-        <h2 className="text-center text-lg font-semibold tracking-tight">Selected Work</h2>
+        <h2 className="text-center text-lg font-semibold tracking-tight">selected work</h2>
         <div className="mt-6 grid grid-cols-3 gap-2">
           {Array.from({ length: artist.galleryCount }, (_, i) => (
             <div key={i} className="aspect-square rounded-md bg-muted" />

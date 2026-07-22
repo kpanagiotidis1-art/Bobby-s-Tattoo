@@ -22,7 +22,7 @@ export const BLOG_POSTS = [
     image: work01,
     imageAlt: 'Fine-line kookaburra tattoo behind the ear',
     publishedAt: '2026-07-13',
-    author: 'Bobby\'s Tattoo Studio',
+    author: 'Bobby\'s Tattoo',
     body: `Getting your first tattoo can feel like a bigger process than it needs to be, mostly because it's unclear what actually happens between "I want a tattoo" and being in the chair. Here's how it works with us.
 
 It Starts With an Inquiry, Not a Booking
@@ -50,7 +50,7 @@ The short version: reach out with as much detail as you can, expect a real conve
     image: work03,
     imageAlt: 'Horse and script lettering tattoo on the chest',
     publishedAt: '2026-07-13',
-    author: 'Bobby\'s Tattoo Studio',
+    author: 'Bobby\'s Tattoo',
     body: `Sydney has no shortage of tattoo studios, which makes the decision harder, not easier. Picking the right one comes down to a few things that matter more than a nice Instagram feed.
 
 Hygiene Isn't Optional
@@ -78,7 +78,7 @@ Ultimately, the right studio is one where the hygiene is obviously excellent, th
     image: work06,
     imageAlt: 'Snake tattoo across the collarbone',
     publishedAt: '2026-07-13',
-    author: 'Bobby\'s Tattoo Studio',
+    author: 'Bobby\'s Tattoo',
     body: `Sydney's climate is part of what makes getting tattooed here great, and part of what makes healing one properly a bit trickier. Here's the quick version — for the full rundown, see our dedicated aftercare page.
 
 Sun Is the Biggest Factor

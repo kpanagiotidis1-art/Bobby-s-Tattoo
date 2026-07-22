@@ -11,34 +11,34 @@ import Seo from '@/components/Seo'
 // chevrons/footer icons) rather than emoji, to stay in one visual language.
 const SECTIONS = [
   {
-    heading: 'Your tattoo is done — what now?',
+    heading: 'your tattoo is done — what now?',
     icon: Sparkles,
-    body: 'Once your tattoo is finished, we’ll cover it with either cling film or an adhesive second-skin film, depending on the piece and your skin.',
+    body: 'once your tattoo is finished, we’ll cover it with either cling film or an adhesive second-skin film, depending on the piece and your skin.',
   },
   {
-    heading: 'Cling film',
+    heading: 'cling film',
     icon: Layers,
-    body: 'Used to cover the new tattoo for a short period. Leave it on for 1–2 hours, or until you get home. Wash gently with fragrance-free soap and warm water, pat dry with a clean paper towel, and let it fully dry before applying a thin layer of aftercare cream.',
+    body: 'used to cover the new tattoo for a short period. leave it on for 1–2 hours, or until you get home. wash gently with fragrance-free soap and warm water, pat dry with a clean paper towel, and let it fully dry before applying a thin layer of aftercare cream.',
   },
   {
-    heading: 'Second-skin film',
+    heading: 'second-skin film',
     icon: Shield,
-    body: 'Our preferred option in most cases. After the tattoo is cleaned and given time to weep and settle, we apply a clear adhesive film over the whole area. It can stay on for a recommended 3 days (minimum 24 hours). To remove it, peel back a bottom corner and lift slowly — doing this under warm running water (like in the shower) helps the adhesive release more easily. Wash gently, pat dry, and apply a thin layer of aftercare cream once dry.',
+    body: 'our preferred option in most cases. after the tattoo is cleaned and given time to weep and settle, we apply a clear adhesive film over the whole area. it can stay on for a recommended 3 days (minimum 24 hours). to remove it, peel back a bottom corner and lift slowly — doing this under warm running water (like in the shower) helps the adhesive release more easily. wash gently, pat dry, and apply a thin layer of aftercare cream once dry.',
   },
   {
-    heading: 'How long does a tattoo take to heal?',
+    heading: 'how long does a tattoo take to heal?',
     icon: Clock,
-    body: 'A minimum of 14 days. Clean gently and pat dry before applying aftercare cream twice a day — morning and evening is ideal. Some dryness and flaking is completely normal; avoid scratching or peeling, and apply a little extra cream if it feels irritated.',
+    body: 'a minimum of 14 days. clean gently and pat dry before applying aftercare cream twice a day — morning and evening is ideal. some dryness and flaking is completely normal; avoid scratching or peeling, and apply a little extra cream if it feels irritated.',
   },
   {
-    heading: 'Keeping your tattoo safe while it heals',
+    heading: 'keeping your tattoo safe while it heals',
     icon: Sun,
-    body: 'For the first 14 days, avoid direct sun and sand, swimming, baths (showers are fine), saunas and spas, and heavy sweating or intense exercise. Even after healing, sunscreen is worth applying long-term — sun exposure is one of the biggest causes of premature fading.',
+    body: 'for the first 14 days, avoid direct sun and sand, swimming, baths (showers are fine), saunas and spas, and heavy sweating or intense exercise. even after healing, sunscreen is worth applying long-term — sun exposure is one of the biggest causes of premature fading.',
   },
   {
-    heading: 'Recommended aftercare products',
+    heading: 'recommended aftercare products',
     icon: Droplet,
-    body: 'A few options that work well: Bepanthen Tattoo Cream, Dr. Pickle Tattoo Balm, Hustle Butter Tattoo Balm, and Ink Nurse Aftercare.',
+    body: 'a few options that work well: Bepanthen Tattoo Cream, Dr. Pickle Tattoo Balm, Hustle Butter Tattoo Balm, and Ink Nurse Aftercare.',
   },
 ]
 
@@ -50,9 +50,9 @@ export default function Aftercare() {
         description="Tattoo aftercare instructions from Bobby's Tattoo — how to care for your new tattoo while it heals."
       />
       <section className="px-6 py-20 text-center">
-        <h1 className="text-3xl font-semibold tracking-tight">Aftercare</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">aftercare</h1>
         <p className="mt-3 text-muted-foreground">
-          Following this closely gives your tattoo the best chance to heal well and stay looking sharp.
+          following this closely gives your tattoo the best chance to heal well and stay looking sharp.
         </p>
       </section>
 
@@ -62,7 +62,7 @@ export default function Aftercare() {
       {SECTIONS.map((section, index) => (
         <section
           key={section.heading}
-          className={`border-t border-border px-6 py-12 ${index % 2 === 0 ? 'bg-muted' : ''}`}
+          className={`border-t border-border px-6 py-12 ${index % 2 === 0 ? 'bg-white' : ''}`}
         >
           <div className="mx-auto flex max-w-3xl gap-4">
             <section.icon className="mt-0.5 size-6 shrink-0 text-brand" aria-hidden />

@@ -13,11 +13,11 @@ const FRESHA_URL = 'https://www.fresha.com'
 // Revisit once there's real review volume — see README "Architecture notes".
 export default function ReviewsCta() {
   return (
-    <section className="border-t border-border bg-muted px-6 py-24 text-center">
+    <section className="border-t border-border bg-white px-6 py-24 text-center">
       <h2 className="text-2xl font-semibold tracking-tight">reviews</h2>
       <SectionAccent className="mt-3" />
       <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-        We&apos;re a new studio and just getting started — read (and leave!) reviews on Google.
+        we&apos;re a new studio and just getting started — read (and leave!) reviews on Google.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <Button
@@ -25,14 +25,14 @@ export default function ReviewsCta() {
           nativeButton={false}
           render={<a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" />}
         >
-          Read Reviews on Google
+          read reviews on Google
         </Button>
         <Button
           variant="outline"
           nativeButton={false}
           render={<a href={FRESHA_URL} target="_blank" rel="noreferrer" />}
         >
-          View us on Fresha
+          view us on Fresha
         </Button>
       </div>
     </section>

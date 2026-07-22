@@ -25,7 +25,7 @@ const FileInput = forwardRef(function FileInput(
         htmlFor={id}
         className="inline-flex h-8 shrink-0 cursor-pointer items-center rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
       >
-        {buttonLabel ?? (multiple ? "Choose files" : "Choose file")}
+        {buttonLabel ?? (multiple ? "choose files" : "choose file")}
       </label>
       <input
         id={id}
@@ -37,7 +37,7 @@ const FileInput = forwardRef(function FileInput(
         {...props}
       />
       <span className="truncate text-sm text-muted-foreground">
-        {fileNames.length ? fileNames.join(", ") : "No file chosen"}
+        {fileNames.length ? fileNames.join(", ") : "no file chosen"}
       </span>
     </div>
   )

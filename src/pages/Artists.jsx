@@ -15,8 +15,8 @@ export default function Artists() {
         description="Meet the artists at Bobby's Tattoo in Darlinghurst, Sydney — coming soon."
         noindex
       />
-      <h1 className="text-3xl font-semibold tracking-tight">Our Artists</h1>
-      <p className="mt-3 text-muted-foreground">Coming soon — check back once our team is announced.</p>
+      <h1 className="text-3xl font-semibold tracking-tight">our artists</h1>
+      <p className="mt-3 text-muted-foreground">coming soon — check back once our team is announced.</p>
     </section>
   )
 
@@ -27,8 +27,8 @@ export default function Artists() {
         title="Our Artists"
         description="Meet the artists at Bobby's Tattoo in Darlinghurst, Sydney and find the right fit for your next tattoo."
       />
-      <h1 className="text-center text-3xl font-semibold tracking-tight">Our Artists</h1>
-      <p className="mt-3 text-center text-muted-foreground">Meet the team and find the right fit for your idea.</p>
+      <h1 className="text-center text-3xl font-semibold tracking-tight">our artists</h1>
+      <p className="mt-3 text-center text-muted-foreground">meet the team and find the right fit for your idea.</p>
 
       <div className="mt-12 grid gap-8 sm:grid-cols-2">
         {ARTISTS.map((artist) => (

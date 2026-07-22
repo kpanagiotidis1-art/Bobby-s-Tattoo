@@ -98,7 +98,7 @@ export default function Header() {
           viewTransition
           className={
             isHome
-              ? 'flex size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/25 shadow-lg backdrop-blur-md'
+              ? 'flex size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/50 shadow-lg backdrop-blur-md'
               : 'shrink-0'
           }
         >
@@ -110,7 +110,7 @@ export default function Header() {
         <div
           className={
             isHome
-              ? 'flex items-center gap-2 rounded-full border border-white/15 bg-black/25 p-2 shadow-lg backdrop-blur-md md:py-3 md:pr-3 md:pl-8'
+              ? 'flex items-center gap-2 rounded-full border border-white/15 bg-black/50 p-2 shadow-lg backdrop-blur-md md:py-3 md:pr-3 md:pl-8'
               : 'contents'
           }
         >

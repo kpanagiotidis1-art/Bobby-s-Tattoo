@@ -52,7 +52,7 @@ export default function ConsentForm() {
     const { error } = await supabase.functions.invoke('submit-consent', { body: formData })
 
     if (error) {
-      setSubmitError('Something went wrong submitting this form — please show a staff member.')
+      setSubmitError('something went wrong submitting this form — please show a staff member.')
       return
     }
 
@@ -62,8 +62,8 @@ export default function ConsentForm() {
   if (submitted) {
     return (
       <div className="rounded-lg border border-border bg-muted/30 p-6 text-center">
-        <p className="font-medium">Thanks — your form has been submitted.</p>
-        <p className="mt-1 text-sm text-muted-foreground">Please show this screen to your artist.</p>
+        <p className="font-medium">thanks — your form has been submitted.</p>
+        <p className="mt-1 text-sm text-muted-foreground">please show this screen to your artist.</p>
       </div>
     )
   }
@@ -71,19 +71,19 @@ export default function ConsentForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6 text-left">
       <div className="space-y-1.5">
-        <Label htmlFor="fullName">Full name</Label>
+        <Label htmlFor="fullName">full name</Label>
         <Input id="fullName" autoComplete="name" aria-invalid={!!errors.fullName} {...register('fullName')} />
         <FieldError message={errors.fullName?.message} />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="dateOfBirth">Date of birth</Label>
+          <Label htmlFor="dateOfBirth">date of birth</Label>
           <Input id="dateOfBirth" type="date" aria-invalid={!!errors.dateOfBirth} {...register('dateOfBirth')} />
           <FieldError message={errors.dateOfBirth?.message} />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="phone">Phone</Label>
+          <Label htmlFor="phone">phone</Label>
           <Input id="phone" type="tel" autoComplete="tel" aria-invalid={!!errors.phone} {...register('phone')} />
           <FieldError message={errors.phone?.message} />
         </div>
@@ -92,7 +92,7 @@ export default function ConsentForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
           <Label htmlFor="idType">ID type</Label>
-          <Input id="idType" placeholder="Driver's license, passport, etc." aria-invalid={!!errors.idType} {...register('idType')} />
+          <Input id="idType" placeholder="driver's license, passport, etc." aria-invalid={!!errors.idType} {...register('idType')} />
           <FieldError message={errors.idType?.message} />
         </div>
         <div className="space-y-1.5">
@@ -103,44 +103,44 @@ export default function ConsentForm() {
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">email</Label>
         <Input id="email" type="email" autoComplete="email" aria-invalid={!!errors.email} {...register('email')} />
         <FieldError message={errors.email?.message} />
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="address">Address</Label>
+        <Label htmlFor="address">address</Label>
         <Input id="address" autoComplete="street-address" aria-invalid={!!errors.address} {...register('address')} />
         <FieldError message={errors.address?.message} />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-3">
         <div className="space-y-1.5">
-          <Label htmlFor="city">City</Label>
+          <Label htmlFor="city">city</Label>
           <Input id="city" aria-invalid={!!errors.city} {...register('city')} />
           <FieldError message={errors.city?.message} />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="state">State</Label>
+          <Label htmlFor="state">state</Label>
           <Input id="state" aria-invalid={!!errors.state} {...register('state')} />
           <FieldError message={errors.state?.message} />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="postcode">Postcode</Label>
+          <Label htmlFor="postcode">postcode</Label>
           <Input id="postcode" aria-invalid={!!errors.postcode} {...register('postcode')} />
           <FieldError message={errors.postcode?.message} />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <Label>Photo of ID</Label>
+        <Label>photo of ID</Label>
         <FileInput
           id="idUpload"
           accept="image/*,.pdf"
           aria-invalid={!!errors.idUpload}
           {...register('idUpload')}
         />
-        <p className="text-xs text-muted-foreground">A photo of the ID named above.</p>
+        <p className="text-xs text-muted-foreground">a photo of the ID named above.</p>
         <FieldError message={errors.idUpload?.message} />
       </div>
 
@@ -221,26 +221,26 @@ export default function ConsentForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="signatureName">Signature (type your full name)</Label>
+          <Label htmlFor="signatureName">signature (type your full name)</Label>
           <Input id="signatureName" aria-invalid={!!errors.signatureName} {...register('signatureName')} />
           <FieldError message={errors.signatureName?.message} />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="signatureDate">Date</Label>
+          <Label htmlFor="signatureDate">date</Label>
           <Input id="signatureDate" type="date" aria-invalid={!!errors.signatureDate} {...register('signatureDate')} />
           <FieldError message={errors.signatureDate?.message} />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="tattooArtist">Tattoo artist (optional)</Label>
-        <Input id="tattooArtist" placeholder="Who's doing your tattoo today?" {...register('tattooArtist')} />
+        <Label htmlFor="tattooArtist">tattoo artist (optional)</Label>
+        <Input id="tattooArtist" placeholder="who's doing your tattoo today?" {...register('tattooArtist')} />
       </div>
 
       {submitError && <p className="text-sm text-destructive">{submitError}</p>}
 
       <Button type="submit" disabled={isSubmitting} className="h-11 w-full rounded-lg text-base">
-        {isSubmitting ? 'Submitting…' : 'Submit Consent Form'}
+        {isSubmitting ? 'submitting…' : 'submit consent form'}
       </Button>
     </form>
   )

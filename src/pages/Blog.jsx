@@ -12,9 +12,14 @@ export default function Blog() {
         title="Blog"
         description="Tattoo care, style guides, and studio news from Bobby's Tattoo in Darlinghurst, Sydney."
       />
-      <h1 className="text-center text-3xl font-semibold tracking-tight">Blog</h1>
-      <p className="mt-3 text-center text-muted-foreground">Tattoo care, style guides, and studio news.</p>
+      <h1 className="text-center text-3xl font-semibold tracking-tight">blog</h1>
+      <p className="mt-3 text-center text-muted-foreground">tattoo care, style guides, and studio news.</p>
 
+      {/* post.title/post.excerpt stay properly-cased in the data (they also
+          feed the <title> tag and meta description via <Seo> below and on
+          BlogPost) — `lowercase` here is a purely visual CSS transform per
+          client feedback 2026-07-22, so the browser tab/search snippet still
+          reads normally. */}
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
         {BLOG_POSTS.map((post) => (
           <Link key={post.slug} to={`/blog/${post.slug}`} viewTransition>
@@ -22,9 +27,9 @@ export default function Blog() {
               <img src={post.image} alt={post.imageAlt} className="aspect-[16/9] w-full object-cover" />
               <CardHeader>
                 <CardDescription>{dateFormatter.format(new Date(post.publishedAt))}</CardDescription>
-                <CardTitle className="text-lg">{post.title}</CardTitle>
+                <CardTitle className="text-lg lowercase">{post.title}</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground">{post.excerpt}</CardContent>
+              <CardContent className="text-muted-foreground lowercase">{post.excerpt}</CardContent>
             </Card>
           </Link>
         ))}

@@ -9,9 +9,9 @@ export default function Faq() {
         title="FAQ"
         description="Answers to common questions about booking, pricing, deposits, and what to expect at Bobby's Tattoo."
       />
-      <h1 className="text-center text-3xl font-semibold tracking-tight">Frequently Asked Questions</h1>
+      <h1 className="text-center text-3xl font-semibold tracking-tight">frequently asked questions</h1>
       <p className="mt-3 text-center text-muted-foreground">
-        Can&apos;t find what you&apos;re looking for? Reach out through our contact form.
+        can&apos;t find what you&apos;re looking for? reach out through our contact form.
       </p>
 
       <Accordion className="mt-12" defaultValue={[FAQ_ITEMS[0].id]}>

@@ -75,7 +75,7 @@ export default function InquiryForm() {
     const { error } = await supabase.functions.invoke('submit-inquiry', { body: formData })
 
     if (error) {
-      setSubmitError(`Something went wrong sending your inquiry — please try again or email us directly at ${CONTACT_EMAIL}.`)
+      setSubmitError(`something went wrong sending your inquiry — please try again or email us directly at ${CONTACT_EMAIL}.`)
       return
     }
 
@@ -85,9 +85,9 @@ export default function InquiryForm() {
   if (submitted) {
     return (
       <div className="rounded-lg border border-border bg-muted/30 p-6 text-center">
-        <p className="font-medium">Thanks — we&apos;ll be in touch soon.</p>
+        <p className="font-medium">thanks — we&apos;ll be in touch soon.</p>
         <p className="mt-1 text-sm text-muted-foreground">
-          We review every inquiry personally and reply by email.
+          we review every inquiry personally and reply by email.
         </p>
       </div>
     )
@@ -96,32 +96,32 @@ export default function InquiryForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="mx-auto max-w-xl space-y-10 text-left">
       <fieldset className="space-y-5">
-        <legend className="text-lg font-semibold tracking-tight">Your Details</legend>
+        <legend className="text-lg font-semibold tracking-tight">your details</legend>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field label="First name" htmlFor="firstName" error={errors.firstName}>
+          <Field label="first name" htmlFor="firstName" error={errors.firstName}>
             <Input id="firstName" autoComplete="given-name" aria-invalid={!!errors.firstName} {...register('firstName')} />
           </Field>
-          <Field label="Last name" htmlFor="lastName" error={errors.lastName}>
+          <Field label="last name" htmlFor="lastName" error={errors.lastName}>
             <Input id="lastName" autoComplete="family-name" aria-invalid={!!errors.lastName} {...register('lastName')} />
           </Field>
         </div>
 
-        <Field label="Email" htmlFor="email" error={errors.email}>
+        <Field label="email" htmlFor="email" error={errors.email}>
           <Input id="email" type="email" autoComplete="email" aria-invalid={!!errors.email} {...register('email')} />
         </Field>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field label="Phone" htmlFor="phone" error={errors.phone}>
+          <Field label="phone" htmlFor="phone" error={errors.phone}>
             <Input id="phone" type="tel" autoComplete="tel" aria-invalid={!!errors.phone} {...register('phone')} />
           </Field>
-          <Field label="Date of birth" htmlFor="dateOfBirth" error={errors.dateOfBirth}>
+          <Field label="date of birth" htmlFor="dateOfBirth" error={errors.dateOfBirth}>
             <Input id="dateOfBirth" type="date" aria-invalid={!!errors.dateOfBirth} {...register('dateOfBirth')} />
           </Field>
         </div>
 
         <div className="space-y-2">
-          <Label>What kind of client are you?</Label>
+          <Label>what kind of client are you?</Label>
           <Controller
             control={control}
             name="clientType"
@@ -141,7 +141,7 @@ export default function InquiryForm() {
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="text-lg font-semibold tracking-tight">Your Tattoo</legend>
+        <legend className="text-lg font-semibold tracking-tight">your tattoo</legend>
 
         {/* Preferred artist field disabled alongside the Artists section
             (2026-07-15) — restore together once real artists exist.
@@ -151,40 +151,40 @@ export default function InquiryForm() {
         */}
 
         <Field
-          label="Tattoo placement"
+          label="tattoo placement"
           htmlFor="tattooPlacement"
           error={errors.tattooPlacement}
         >
-          <Input id="tattooPlacement" placeholder="Example: Inner bicep" aria-invalid={!!errors.tattooPlacement} {...register('tattooPlacement')} />
+          <Input id="tattooPlacement" placeholder="example: inner bicep" aria-invalid={!!errors.tattooPlacement} {...register('tattooPlacement')} />
         </Field>
 
         <Field
-          label="Tattoo size"
+          label="tattoo size"
           htmlFor="tattooSize"
-          helperText="Please specify in cm — for reference, a standard iPhone is about 15cm tall."
+          helperText="please specify in cm — for reference, a standard iPhone is about 15cm tall."
           error={errors.tattooSize}
         >
-          <Input id="tattooSize" placeholder="Example: 20-25cm" aria-invalid={!!errors.tattooSize} {...register('tattooSize')} />
+          <Input id="tattooSize" placeholder="example: 20-25cm" aria-invalid={!!errors.tattooSize} {...register('tattooSize')} />
         </Field>
 
         <Field
-          label="Tattoo description"
+          label="tattoo description"
           htmlFor="tattooDescription"
-          helperText="Be as detailed as you can — if it's a flash piece or existing design, mention it and attach a reference below."
+          helperText="be as detailed as you can — if it's a flash piece or existing design, mention it and attach a reference below."
           error={errors.tattooDescription}
         >
           <Textarea
             id="tattooDescription"
             rows={4}
-            placeholder="Let us know your ideas and any specific elements"
+            placeholder="let us know your ideas and any specific elements"
             aria-invalid={!!errors.tattooDescription}
             {...register('tattooDescription')}
           />
         </Field>
 
         <Field
-          label="Reference images (optional)"
-          helperText="Previous work, flash, other art, or rough sketches — anything that helps visualise the concept."
+          label="reference images (optional)"
+          helperText="previous work, flash, other art, or rough sketches — anything that helps visualise the concept."
         >
           <FileInput
             id="referenceImages"
@@ -195,8 +195,8 @@ export default function InquiryForm() {
         </Field>
 
         <Field
-          label="Tattoo area photo (optional)"
-          helperText="A clear photo of where you want the tattoo — circling or boxing the area helps indicate placement and size. Can be sent later."
+          label="tattoo area photo (optional)"
+          helperText="a clear photo of where you want the tattoo — circling or boxing the area helps indicate placement and size. can be sent later."
         >
           <FileInput
             id="tattooAreaImages"
@@ -207,39 +207,39 @@ export default function InquiryForm() {
         </Field>
 
         <Field
-          label="Skin conditions or allergies (optional)"
+          label="skin conditions or allergies (optional)"
           htmlFor="skinConditions"
-          helperText="If yes, briefly describe the condition and whether it may affect the tattoo area."
+          helperText="if yes, briefly describe the condition and whether it may affect the tattoo area."
         >
           <Input id="skinConditions" {...register('skinConditions')} />
         </Field>
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="text-lg font-semibold tracking-tight">Availability</legend>
+        <legend className="text-lg font-semibold tracking-tight">availability</legend>
 
         <Field
-          label="Preferred days (optional)"
+          label="preferred days (optional)"
           htmlFor="preferredDays"
-          helperText="Any days of the week that generally work best for you."
+          helperText="any days of the week that generally work best for you."
         >
-          <Input id="preferredDays" placeholder="Example: Weekday afternoons" {...register('preferredDays')} />
+          <Input id="preferredDays" placeholder="example: weekday afternoons" {...register('preferredDays')} />
         </Field>
 
         <Field
-          label="Desired dates (optional)"
+          label="desired dates (optional)"
           htmlFor="desiredDates"
-          helperText="We can't guarantee these dates, but we'll try to get as close as possible."
+          helperText="we can't guarantee these dates, but we'll try to get as close as possible."
         >
-          <Input id="desiredDates" placeholder="Example: June 10th-15th" {...register('desiredDates')} />
+          <Input id="desiredDates" placeholder="example: June 10th-15th" {...register('desiredDates')} />
         </Field>
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="text-lg font-semibold tracking-tight">A Little More</legend>
+        <legend className="text-lg font-semibold tracking-tight">a little more</legend>
 
         <div className="space-y-2">
-          <Label>How did you hear about us? (optional)</Label>
+          <Label>how did you hear about us? (optional)</Label>
           <Controller
             control={control}
             name="hearAboutUs"
@@ -267,7 +267,7 @@ export default function InquiryForm() {
           />
         </div>
 
-        <Field label="Your Instagram (optional)" htmlFor="instagramHandle">
+        <Field label="your Instagram (optional)" htmlFor="instagramHandle">
           <Input id="instagramHandle" placeholder="@yourhandle" {...register('instagramHandle')} />
         </Field>
       </fieldset>
@@ -275,7 +275,7 @@ export default function InquiryForm() {
       {submitError && <p className="text-sm text-destructive">{submitError}</p>}
 
       <Button type="submit" disabled={isSubmitting} className="h-11 w-full rounded-lg text-base">
-        {isSubmitting ? 'Sending…' : 'Send Inquiry'}
+        {isSubmitting ? 'sending…' : 'send inquiry'}
       </Button>
     </form>
   )

@@ -180,8 +180,8 @@ export default function Terms() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-20">
       <Seo title="Terms of Service" noindex />
-      <h1 className="text-3xl font-semibold tracking-tight">Terms of Service</h1>
-      <p className="mt-3 text-sm text-muted-foreground">Last updated: to be confirmed before launch.</p>
+      <h1 className="text-3xl font-semibold tracking-tight">terms of service</h1>
+      <p className="mt-3 text-sm text-muted-foreground">last updated: to be confirmed before launch.</p>
 
       <div className="mt-12 space-y-8">
         {SECTIONS.map((section) => (
