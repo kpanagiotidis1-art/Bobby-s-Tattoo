@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-// import { useSearchParams } from 'react-router-dom' — only used for the
-// disabled preferredArtist prefill below, restore together.
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -30,10 +28,6 @@ function Field({ label, htmlFor, helperText, error, children }) {
 export default function InquiryForm() {
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState(null)
-  // Artist prefill disabled alongside the Artists section (2026-07-15) — this
-  // used to read /?artist=Name#contact from "Book with {artist}" links.
-  // Restore together with ArtistDetail/routes.jsx once artists exist:
-  // const [searchParams] = useSearchParams()
   const {
     register,
     control,
@@ -42,7 +36,6 @@ export default function InquiryForm() {
   } = useForm({
     resolver: zodResolver(inquirySchema),
     defaultValues: {
-      // preferredArtist: searchParams.get('artist') ?? '',
       // clientType must start as a defined value ('') rather than undefined —
       // Base UI's RadioGroup warns loudly if it flips from uncontrolled to
       // controlled the moment a real value is set.
@@ -64,6 +57,7 @@ export default function InquiryForm() {
     formData.append('tattooPlacement', data.tattooPlacement)
     formData.append('tattooSize', data.tattooSize)
     formData.append('tattooDescription', data.tattooDescription)
+    if (data.preferredArtist) formData.append('preferredArtist', data.preferredArtist)
     if (data.skinConditions) formData.append('skinConditions', data.skinConditions)
     if (data.preferredDays) formData.append('preferredDays', data.preferredDays)
     if (data.desiredDates) formData.append('desiredDates', data.desiredDates)
@@ -143,13 +137,6 @@ export default function InquiryForm() {
       <fieldset className="space-y-5">
         <legend className="text-lg font-semibold tracking-tight">your tattoo</legend>
 
-        {/* Preferred artist field disabled alongside the Artists section
-            (2026-07-15) — restore together once real artists exist.
-        <Field label="Preferred artist (optional)" htmlFor="preferredArtist">
-          <Input id="preferredArtist" placeholder="No preference" {...register('preferredArtist')} />
-        </Field>
-        */}
-
         <Field
           label="tattoo placement"
           htmlFor="tattooPlacement"
@@ -180,6 +167,10 @@ export default function InquiryForm() {
             aria-invalid={!!errors.tattooDescription}
             {...register('tattooDescription')}
           />
+        </Field>
+
+        <Field label="preferred artist (optional)" htmlFor="preferredArtist">
+          <Input id="preferredArtist" placeholder="no preference" {...register('preferredArtist')} />
         </Field>
 
         <Field

@@ -14,9 +14,6 @@ export const inquirySchema = z.object({
   lastName: z.string().trim().min(1, 'Enter your last name'),
   email: z.email('Enter a valid email address'),
   phone: z.string().trim().min(6, 'Enter a phone number'),
-  // preferredArtist: disabled alongside the Artists section (2026-07-15) —
-  // see src/features/inquiry/InquiryForm.jsx. Restore together.
-  // preferredArtist: z.string().trim().optional(),
 
   clientType: z.enum(['New Client', 'Returning Client', 'PMU / Cosmetic Tattoo Client'], {
     message: 'Let us know what kind of client you are',
@@ -29,6 +26,7 @@ export const inquirySchema = z.object({
     .string()
     .trim()
     .min(20, 'Please be as detailed as you can (at least 20 characters)'),
+  preferredArtist: z.string().trim().optional(),
   referenceImages: fileListSchema.optional(),
   tattooAreaImages: fileListSchema.optional(),
   skinConditions: z.string().trim().optional(),

@@ -79,6 +79,7 @@ Deno.serve(async (req) => {
     const tattooPlacement = requireString(form, 'tattooPlacement')
     const tattooSize = requireString(form, 'tattooSize')
     const tattooDescription = requireString(form, 'tattooDescription')
+    const preferredArtist = optionalString(form, 'preferredArtist')
     const skinConditions = optionalString(form, 'skinConditions')
     const preferredDays = optionalString(form, 'preferredDays')
     const desiredDates = optionalString(form, 'desiredDates')
@@ -107,6 +108,7 @@ Deno.serve(async (req) => {
       tattoo_placement: tattooPlacement,
       tattoo_size: tattooSize,
       tattoo_description: tattooDescription,
+      preferred_artist: preferredArtist,
       reference_image_paths: referenceImagePaths,
       tattoo_area_image_paths: tattooAreaImagePaths,
       skin_conditions: skinConditions,
@@ -138,6 +140,7 @@ Deno.serve(async (req) => {
         `Placement: ${tattooPlacement}`,
         `Size: ${tattooSize}`,
         `Description: ${tattooDescription}`,
+        preferredArtist ? `Preferred artist: ${preferredArtist}` : null,
         skinConditions ? `Skin conditions/allergies: ${skinConditions}` : null,
         '',
         preferredDays ? `Preferred days: ${preferredDays}` : null,
