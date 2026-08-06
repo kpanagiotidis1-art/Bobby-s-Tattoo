@@ -33,9 +33,13 @@ async function uploadFiles(supabase: SupabaseClient, files: FormDataEntryValue[]
 
 // `inquiry-uploads` is a private bucket (no public read policy), so the
 // studio can't just open a plain URL to a path — it needs a signed link.
-// 30 days covers a realistic follow-up window; the file itself keeps
-// existing in storage afterwards, only this particular link expires.
-const SIGNED_URL_EXPIRY_SECONDS = 60 * 60 * 24 * 30
+// Set effectively permanent (10 years) rather than a short follow-up
+// window, per client request (2026-08-06) — Bobby wants the link in the
+// notification email to keep working indefinitely, not just for the
+// duration of one review cycle. Still a real expiry under the hood (the
+// bucket stays private, not made public), just far enough out not to
+// matter in practice.
+const SIGNED_URL_EXPIRY_SECONDS = 60 * 60 * 24 * 365 * 10
 
 async function signUrls(supabase: SupabaseClient, paths: string[]) {
   if (paths.length === 0) return []
@@ -171,7 +175,7 @@ Deno.serve(async (req) => {
         referenceImageUrls.length ? ['', 'Reference images:', ...referenceImageUrls].join('\n') : null,
         tattooAreaImageUrls.length ? ['', 'Area photos:', ...tattooAreaImageUrls].join('\n') : null,
         (referenceImagePaths.length || tattooAreaImagePaths.length)
-          ? '\n(links expire in 30 days — the photos themselves stay in Supabase Storage)'
+          ? '\n(these links are permanent — safe to save or refer back to)'
           : null,
       ]
         .filter(Boolean)
