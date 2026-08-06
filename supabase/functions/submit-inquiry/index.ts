@@ -31,6 +31,24 @@ async function uploadFiles(supabase: SupabaseClient, files: FormDataEntryValue[]
   return paths
 }
 
+// `inquiry-uploads` is a private bucket (no public read policy), so the
+// studio can't just open a plain URL to a path — it needs a signed link.
+// 30 days covers a realistic follow-up window; the file itself keeps
+// existing in storage afterwards, only this particular link expires.
+const SIGNED_URL_EXPIRY_SECONDS = 60 * 60 * 24 * 30
+
+async function signUrls(supabase: SupabaseClient, paths: string[]) {
+  if (paths.length === 0) return []
+  const { data, error } = await supabase.storage
+    .from('inquiry-uploads')
+    .createSignedUrls(paths, SIGNED_URL_EXPIRY_SECONDS)
+  if (error) {
+    console.error('Failed to create signed URLs:', error.message)
+    return []
+  }
+  return data.filter((entry) => entry.signedUrl).map((entry) => entry.signedUrl)
+}
+
 // Best-effort only: the inquiry is already safely written to the database
 // before this is ever called, so a Resend outage, an unset API key (before
 // the client finishes setting up Resend), or a bad address should never
@@ -119,6 +137,9 @@ Deno.serve(async (req) => {
     })
     if (insertError) throw new Error(`Database insert failed: ${insertError.message}`)
 
+    const referenceImageUrls = await signUrls(supabase, referenceImagePaths)
+    const tattooAreaImageUrls = await signUrls(supabase, tattooAreaImagePaths)
+
     // RESEND_FROM_EMAIL and STUDIO_NOTIFICATION_EMAIL are Supabase secrets,
     // not hardcoded, so switching from Resend's default sending domain to
     // the client's verified bobbystattoo.com address is a config change,
@@ -147,8 +168,11 @@ Deno.serve(async (req) => {
         desiredDates ? `Desired dates: ${desiredDates}` : null,
         hearAboutUs.length ? `Heard about us via: ${hearAboutUs.join(', ')}` : null,
         instagramHandle ? `Instagram: ${instagramHandle}` : null,
-        referenceImagePaths.length ? `Reference images uploaded: ${referenceImagePaths.length}` : null,
-        tattooAreaImagePaths.length ? `Area photos uploaded: ${tattooAreaImagePaths.length}` : null,
+        referenceImageUrls.length ? ['', 'Reference images:', ...referenceImageUrls].join('\n') : null,
+        tattooAreaImageUrls.length ? ['', 'Area photos:', ...tattooAreaImageUrls].join('\n') : null,
+        (referenceImagePaths.length || tattooAreaImagePaths.length)
+          ? '\n(links expire in 30 days — the photos themselves stay in Supabase Storage)'
+          : null,
       ]
         .filter(Boolean)
         .join('\n'),
