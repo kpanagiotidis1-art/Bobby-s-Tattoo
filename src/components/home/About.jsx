@@ -1,4 +1,5 @@
 import SectionAccent from '@/components/SectionAccent'
+import StudioSlideshow from './StudioSlideshow'
 
 export default function About() {
   return (
@@ -13,6 +14,10 @@ export default function About() {
           first-time clients to heavily tattooed collectors. every booking starts with a
           conversation, not a slot in a calendar.
         </p>
+
+        <div className="mx-auto mt-10 max-w-2xl">
+          <StudioSlideshow />
+        </div>
       </div>
     </section>
   )
